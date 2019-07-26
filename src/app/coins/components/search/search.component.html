@@ -1,0 +1,7 @@
+<div class="search-input-container">
+  <input
+    type="text"
+    [(ngModel)]="term"
+    (ngModelChange)="emitSearchTerm()"
+    placeholder="Type any coin name or symbol to search list" />
+</div>

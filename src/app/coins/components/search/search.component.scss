@@ -1,0 +1,36 @@
+@import '../../../../styles/base/mixins.scss';
+@import '../../../../styles/base/variables.scss';
+
+:host {
+  .search-input-container {
+    margin:50px auto;
+  }
+
+  input {
+    border-radius:3px;
+    padding:10px 20px;
+    width:400px;
+    font-size:14px;
+    display:block;
+    margin:0 auto;
+    border:1px solid #EAEAEA;
+    box-shadow:0 0 10px rgba(0,0,0,.1);
+    @include transition(.15s ease-in-out);
+
+    &:focus {
+      box-shadow: 0 0 10px $primary-color;
+      outline:0;
+
+    }
+  }
+
+  @media only screen and (max-width: $mobile-width) {
+    .search-input-container {
+        margin:20px auto;
+    }
+
+    input {
+        width:90%;
+    }
+  }
+}

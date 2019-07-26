@@ -1,0 +1,28 @@
+/* You can add global styles to this file, and also import other style files */
+@import './styles/app';
+
+body {
+  font-family:$font-light;
+  background:#F8FAFF;
+}
+
+input {
+  font-family:$font-light;
+  box-sizing:border-box;
+}
+
+/**
+ *  Loading
+ */
+.loading {
+  width:100px;
+  margin:0 auto;
+  display:block;
+}
+
+.no-results {
+  font-size:14px;
+  text-align:center;
+  margin: 50px auto;
+  font-family:$font-light;
+}

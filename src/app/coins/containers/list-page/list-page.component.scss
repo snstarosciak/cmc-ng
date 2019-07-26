@@ -1,0 +1,159 @@
+@import '../../../../styles/base/variables.scss';
+
+$table-header: $primary-color;
+$table-border: #d9d9d9;
+$row-bg: #f4f2f1;
+
+:host {
+  .loading {
+    margin:100px auto;
+  }
+
+  .header {
+    .flex-row {
+      display:flex;
+      align-items:center;
+
+      span {
+        margin-left:auto;
+      }
+
+      &.first {
+        span {
+          margin-left:0;
+        }
+      }
+    }
+
+    img {
+      display:none;
+      margin-left:10px;
+
+      &.active {
+        display:block;
+      }
+    }
+  }
+
+  .symbol {
+    font-size:10px;
+    padding:3px 7px;
+    background:#EAEAEA;
+    color:#999;
+    border-radius:3px;
+  }
+
+  .table-container {
+    display:block;
+    margin:20px auto;
+    width:80%;
+    border-radius:3px;
+    overflow:hidden;
+  }
+
+  .flex-table {
+    display:flex;
+
+    &:first-of-type {
+      font-family:"Proxima Nova Semibold", arial, sans-serif;
+    }
+
+    &:first-of-type .flex-row {
+      background:$table-header;
+      color:white;
+      cursor:pointer;
+    }
+
+    &.row:nth-child(odd) .flex-row {
+      background:$row-bg;
+    }
+
+    &:hover {
+      background:#F5F5F5;
+      transition:500ms;
+    }
+  }
+
+  .flex-row {
+    width:100%;
+    text-align:right;
+    padding:15px 10px;
+    font-size:14px;
+
+    &.first {
+      text-align:left;
+      font-family:$font-semibold;
+    }
+  }
+
+  .flex-cell {
+    width:100%;
+    text-align:center;
+    padding:10px 15px;
+  }
+
+  @media all and (max-width: $mobile-width) {
+
+    .table-container {
+      width:90%;
+    }
+
+    .flex-table {
+      flex-flow:row wrap;
+
+      &.row:nth-child(odd) .flex-row {
+        background:none;
+      }
+
+      &.row:nth-child(odd) .flex-row.first {
+        background:$row-bg;
+      }
+
+      .flex-row {
+        border-bottom:0;
+        text-align:left;
+
+        span {
+          margin-left:0;
+        }
+
+        &.first {
+          background:$row-bg;
+        }
+      }
+    }
+
+    .loading {
+      margin:40px auto;
+    }
+
+    .header {
+      font-family:$font-semibold;
+      font-size:12px;
+
+      img {
+        display:none;
+
+        &.active {
+          display:block;
+        }
+      }
+
+      .flex-row.first {
+        background:$table-header;
+      }
+    }
+
+    .flex-row {
+      width:100%;
+
+      &.first {
+        width:100%;
+      }
+    }
+
+    .flex-cell {
+      width:100%;
+    }
+  }
+}

@@ -1,0 +1,46 @@
+<coin-search (searchTermEmitter)="filterListResults($event)"></coin-search>
+<div class="table-container" role="table" aria-label="Destinations">
+  <div class="flex-table header" role="rowgroup">
+    <div class="flex-row first" role="columnheader" (click)="sort('name')">
+      <span>Name</span>
+      <img [class.active]="sortOptions.name" src="assets/images/up-white.svg" width="10" />
+      <img [class.active]="!sortOptions.name" src="assets/images/down-white.svg" width="10" />
+    </div>
+    <div class="flex-row" role="columnheader" (click)="sort('market_cap')">
+        <span>Market Cap</span>
+      <img [class.active]="sortOptions.market_cap" src="assets/images/up-white.svg" width="10" />
+      <img [class.active]="!sortOptions.market_cap" src="assets/images/down-white.svg" width="10" />
+    </div>
+    <div class="flex-row" role="columnheader" (click)="sort('price')">
+      <span>Price</span>
+      <img [class.active]="sortOptions.price" src="assets/images/up-white.svg" width="10" />
+      <img [class.active]="!sortOptions.price" src="assets/images/down-white.svg" width="10" />
+    </div>
+    <div class="flex-row" role="columnheader" (click)="sort('volume_24h')">
+      <span>Volume (24h)</span>
+      <img [class.active]="sortOptions.volume_24h" src="assets/images/up-white.svg" width="10" />
+      <img [class.active]="!sortOptions.volume_24h" src="assets/images/down-white.svg" width="10" />
+    </div>
+    <div class="flex-row" role="columnheader" (click)="sort('circulating_supply')">
+      <span>Circulating Supply</span>
+      <img [class.active]="sortOptions.circulating_supply" src="assets/images/up-white.svg" width="10" />
+      <img [class.active]="!sortOptions.circulating_supply" src="assets/images/down-white.svg" width="10" />
+    </div>
+  </div>
+
+  <ng-container *ngIf="!loading">
+    <div class="flex-table row" role="rowgroup" *ngFor="let coin of (coinData | searchFilter:filterTerm)">
+      <div class="flex-row first" role="cell">{{coin.name}} <span class="symbol">{{coin.symbol}}</span></div>
+      <div class="flex-row" role="cell">${{coin.getMarketCap()}}</div>
+      <div class="flex-row" role="cell">${{coin.getPrice()}}</div>
+      <div class="flex-row" role="cell">${{coin.get24HVolume()}}</div>
+      <div class="flex-row" role="cell">{{coin.getCirculatingSupply()}}</div>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="!loading && (coinData | searchFilter: filterTerm).length === 0">
+    <div class="no-results">Nothing matches your search term</div>
+  </ng-container>
+
+  <img class="loading" *ngIf="loading" src="assets/images/loading.svg" width="100" />
+</div>
